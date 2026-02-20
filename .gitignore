@@ -1,0 +1,15 @@
+# Окружение
+venv/
+env/
+__pycache__/
+*.pyc
+
+# База данных
+*.db
+
+# Секреты
+.env
+
+# Настройки VS Code / IDE
+.vscode/
+.idea/
