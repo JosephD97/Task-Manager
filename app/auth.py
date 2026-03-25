@@ -17,11 +17,12 @@ def get_password_hash(password):
 def verify_password(plain_password, hashed_password):
     return pwd_context.verify(plain_password, hashed_password)
 
+#создание JWT-токена доступа (нужно для того чтобы на каждое действие не спрашивать логин и пароль, если пользователь уже залогинен)
 def create_access_token(data:dict):
-    to_encode=data.copy()
+    to_encode=data.copy()#копирует входные данные, чтобы не менять оригинал (так безопаснее)
     #срок годности токена
     expire=datetime.utcnow() + timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
     to_encode.update({"exp": expire})
-    #шифрование данных с помощью секретного ключа из .env
+    #шифрование данных с помощью секретного ключа из .env (чтобы никто не мог изменить данные внутри токена, типа как печать на бумаге)
     encoded_jwt=jwt.encode(to_encode, settings.SECRET_KEY, algorithm=settings.ALGORITHM)
     return encoded_jwt

@@ -3,10 +3,12 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from .config import settings
 
-# connect_args={"check_same_thread": False} если SQLite
+# connect_args={"check_same_thread": False} если SQLite, но у меня postgres поэтому не нужен
 '''engine = create_engine(
     settings.DATABASE_URL, connect_args={"check_same_thread": False}
 )'''
+
+
 # создание движка, который связывает python и postgres
 engine = create_engine(settings.DATABASE_URL) 
 
@@ -18,7 +20,7 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False,bind=engine)
 #bind=engine      соединает сессию к подключению к БД
 
 
-#Родительский класс, все таблицы будут наследоваться от него Base
+#родительский класс, все таблицы будут наследоваться от него Base
 Base = declarative_base()
 #Base класс который создаётся функцией declarative_base()
 

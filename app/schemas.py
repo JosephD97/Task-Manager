@@ -1,4 +1,4 @@
-#правила передачи данных
+#этот файл нужен для определения правил передачи данных
 
 from pydantic import BaseModel, EmailStr
 from datetime import datetime
@@ -13,7 +13,7 @@ class TaskBase(BaseModel):
     deadline: Optional[datetime] = None
 
 class TaskCreate(TaskBase):
-    pass  # Когда мы создаем задачу, нам нужно то же самое, что в Base
+    pass  #когда мы создаем задачу, нам нужно то же самое, что в Base
 
 class Task(TaskBase):
     id: int
@@ -23,7 +23,7 @@ class Task(TaskBase):
     class Config:
         from_attributes = True
 
-# cхемы для Users
+#cхемы для Users
 
 class UserBase(BaseModel):#присылает нам email и password
     email: EmailStr

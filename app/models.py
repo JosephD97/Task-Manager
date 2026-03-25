@@ -1,3 +1,5 @@
+#этот файл нужен для описывания структур таблиц в базе данных через Python-классы
+
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, DateTime
 from sqlalchemy.orm import relationship
 from datetime import datetime
